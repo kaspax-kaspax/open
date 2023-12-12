@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ExifApi",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://exifapi.azurewebsites.net"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "apikeyAuth": {
+        "type": "http",
+        "scheme": "apikey"
+      }
+    }
+  },
+  "paths": {
+    "/upload": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Azure ExifApi",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apikeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
